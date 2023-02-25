@@ -22,3 +22,27 @@
         // 清空token
         window.sessionStorage.clear()//跳转到登录页
         this.$router.push('/login')
+
+## 4.主页布局
+    4.2左侧菜单布局
+        菜单分为二级，并且可以折叠.
+        <el-menu>
+            <el-submenu>
+                <!-- 这个 template 是一级菜单的内容模板-->
+                <i class="el-icon-menu"></i>
+                <span>一级菜单</span>
+                <!-- 在一级菜单中，可以嵌套二级菜单-->
+                <el-menu-item>
+                    <i class="el-icon-menu"></i>
+                    <span slot="title">二级菜单</span>
+                </el-menu-item>
+            </el-submenu>
+        </el-menu>
+
+    4.3通过接口获取菜单数据
+        通过axios请求拦截器添加 token，保证拥有获取数据的权限
+        // axios请求拦截
+        axios.interceptors.request .use(config => {
+            // 为请求头对象，添加 Token 验证的 Authorization 字段
+            config.headers.Authorization = window.sessionStorage.getItem('token')return config
+        })

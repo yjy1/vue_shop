@@ -31,8 +31,8 @@ export default {
         return {
             // 这是登录表单的绑定数据对象
             loginForm: {
-                username: 'zs',
-                password: '123'
+                username: 'admin',
+                password: '123456'
             },
             // 这是登录表单的验证规则对象
             loginFormRules: {
@@ -71,7 +71,7 @@ export default {
                     // 1.2 token 只应在当前网站打开期间生效，所以将 token 保存在 sessionstorage 中
                     // 2通过编程式导航跳转到后台主页，路由地址是 /home
                     window.sessionStorage.setItem('token',res.data.token)
-
+                    console.log('token 已设置')
                     this.$router.push('/home')
                     
                }
