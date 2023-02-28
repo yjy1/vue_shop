@@ -1,5 +1,7 @@
 import Vue from "vue";
 import {
+    Timeline,
+    TimelineItem,
     Checkbox,
     Steps,
     Button,
@@ -40,6 +42,8 @@ import {
     Upload
 } from "element-ui";
 
+Vue.use(Timeline)
+Vue.use(TimelineItem)
 Vue.use(Upload)
 Vue.use(CheckboxGroup)
 Vue.use(Checkbox)
