@@ -46,3 +46,34 @@
             // 为请求头对象，添加 Token 验证的 Authorization 字段
             config.headers.Authorization = window.sessionStorage.getItem('token')return config
         })
+
+## 2.项目上线
+    2.1 项目上线相关配置
+    1.通过 node 创建 web 服务器
+    创建 node 项目，并安装express，通过express快速创建 web 服务器，将vue打包生成的dist 文件夹托管为静态资源即可，关键代码如下:
+    const express = require('express')// 创建 web 服务器
+    const app = express ()
+    //托管静态资源
+    app.use (express .static('./dist') )
+    //启动 web 服务器
+    app.listen(80，() => {
+        console.log('web server running at http://127.0.0.1')
+    }）
+
+    
+    2.1项目上线相关配置
+        3.配置 HTTPS 服务
+        申请 SSL 证书 (https://freessl.org)
+        1.进入https://freesslcn/官网，输入要申请的域名并选择品牌
+        2.输入自己的邮箱并选择相关选项。
+        3.验证DNS(在域名管理后台添加TXT 记录)
+        4.验证通过之后，下载SSL证书 (full_chain.pem 公;private.key私钥)
+        
+         
+        4.使用pm2管理应用
+        1.在服务器中安装 pm2: npm i pm2 -g
+        2.启动项目:pm2 start 脚本--name自定义名称
+        3.查看运行项目:pm2 ls
+        4.重启项目:pm2 restart 自定义名称
+        5.停止项目:pm2 stop 自定义名称
+        6.删除项目: pm2 delete 自定义名称
